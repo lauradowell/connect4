@@ -5,6 +5,14 @@ P1 = str(input('Player1, enter your name: '))
 
 P2 = str(input('Player2, enter your name: '))
 
+player1 = { 1: P1, 2: "|x|" }
+player2 = { 1: P2, 2: "|o|"}
+
+
+#print("Hello, " + P1 + " and " + P2 + "!"+ " Welcome to Connect 4")
+    
+
+
 columns = {
     # column : counter
     1: 0,
@@ -17,74 +25,90 @@ columns = {
 }
 
 
-# def taketurn(aplayer):
-#    while player1move is True:
-
-#    while player2move is True:
-
-
 true = True
 
 
-def countachip(player):
-    while true == True:
-        UI1 = input(player + ', Enter a row number to put down your chip: ')
+emptymap = [
+    "  1   2   3   4   5   6   7   ",
+    "| 1 |   |   |   |   |   |   | ",
+    "| b |   |   |   |   |   |   | ",
+    "| c |   |   |   |   |   |   | ",
+    "| d |   |   |   |   |   |   | ",
+    "| e |   |   |   |   |   |   | ",
+    "| f |   |   |   |   |   |   | ",
+    "| g |   |   |   |   |   |   | ",
+    "| 2 |   |   |   |   |   |   | ",
+    "————————————————————————————— ",
+]
 
+
+chiplog= []
+
+def countachip(currentPlayer):
+
+    taketurn = False
+
+    while taketurn  == False:
+        #currentPlayer[1] accesses name, Currentplayer[2]" accesses chip x or o
+        UI1 = input(str(currentPlayer[1]) + ', Enter a row number to put down your chip: ')
         isuiadigit = UI1.isdigit()
-     #if input isnt a digit
-        while isuiadigit != True:
-            UI1 = input(player + ', That is not a number. Enter a row number to put down your chip: ')
-            #if input is a digit
-        while UI1.isdigit() == True:
-             for i in columns.keys():
-                 #if user input is the same as a column number
-                     if UI1 == i:
-                        if columns[UI1] <= 6:
-                             columns[UI1] += 1
-                             print("X pos is ", UI1, "Y pos is", columns[UI1]) 
-                        elif columns[UI1] == 7:
-                             UI1 = int(input(
-                                 P1 + ',This row is full. Enter a diferent row number to put down your chip: '))
-                        elif UI1 == str:
-                             print("Sorry, that is not a column number")
+        print(isuiadigit)
+        if isuiadigit == True :
+            taketurn = True
+        else: print(str(currentPlayer[1]) + ", That wasn't a number.")
+
+
+    for i in columns.keys():
+                #if user input is the same as a column number
+        #print (UI1, i)
+        UI1 = int(UI1)
+        if UI1 == i:
+            if columns[UI1] >= -6:
+                columns[UI1] -= 1
+                chippos = UI1 , columns[UI1]
+                chiplog.insert(1, chippos)
+                print(chiplog)
+                print (chiplog[0], "hi")
+
+                
+                print("X pos is ", UI1, "Y pos is", columns[UI1]) 
+            elif columns[UI1] == -7:
+                UI1 = int(input(
+                    str(currentPlayer[1])  + ',This row is full. Enter a diferent row number to put down your chip: '))
+            elif UI1 == str:
+                print("Sorry, that is not a column number")
                     
+    if isuiadigit == False:
+        UI1 = input(str(currentPlayer[1])  + ', That is not a number. Enter a row number to put down your chip: ')
+    
+     
+    #for i in chiplog:
+         #for j in i:
+             #print (i[0], i[1], "yeiie")
+    
+    for i in range(7):
+        print("")
+        for j in range(7):
+            
+            for b in chiplog:
 
-                # check if column is full
-                # if y position isnt full add 1
+                if i == b[0]: #and j == b[1]:
+                     
+                     print(currentPlayer[2], end =  "")
+            
+            print ("| |", end = "")
+                 
+    print("")  
 
+                
+                 
 
-       
-
-
-       # add 1 to count1
-
-playerturn = 0
-
-
-print (P1)
 while true == True:
-    if playerturn == 0:
-         countachip(P1) 
-         playerturn += 1
-
-         if playerturn == 1:
-             countachip(P2)
-             playerturn -= 1
+     countachip(player1)
+     countachip(player2)
 
 
 
-
-
-#countachip(P1)
-#countachip(P2)
-
-
-def greet(name1, name2):
-    greetings = "Hello, " + name1 + " and " + name2 + "!"
-    greetings += " Welcome to Connect 4"
-    return greetings
-
-# print(greet(P1, P2))
 
 
 # def drawmap (coords):
@@ -101,22 +125,30 @@ def greet(name1, name2):
     # logic that adds counter to a list of counters
 
 
-# def manager ():
-    # while #gameisstillgoing p1 take a turn, p2 take a turn.
-
-
 emptymap = [
     "  1   2   3   4   5   6   7   ",
+    "| a |   |   |   |   |   |   | ",
+    "| b |   |   |   |   |   |   | ",
+    "| c |   |   |   |   |   |   | ",
     "|   |   |   |   |   |   |   | ",
     "|   |   |   |   |   |   |   | ",
     "|   |   |   |   |   |   |   | ",
     "|   |   |   |   |   |   |   | ",
     "|   |   |   |   |   |   |   | ",
-    "|   | x |   |   |   |   |   | ",
-    "|   | x |   |   |   |   |   | ",
-    "|   |o  | o |   | x |   |   | ",
     "————————————————————————————— ",
 ]
+
+
+
+for i in emptymap:
+        if i == "a":
+            print ("found an a")
+
+
+
+
+
+
 # agnes 5:1
 # laura 2:1
 # agnes 2:2
@@ -136,128 +168,3 @@ counter2 = {
 # create a variable counter3 , counter3.x = 7forex
 # ask computer how may times "7"for ex has been called before
 # have a list of all of the counters that are in the game
-
-# print (emptymap)
-
-
-row1ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "| X |   |   |   |   |   |   | ",
-    "————————————————————————————— ",
-]
-
-row2ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   | X |   |   |   |   |   | ",
-    "————————————————————————————— ",
-]
-
-row3ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   | X |   |   |   |   | ",
-    "————————————————————————————— ",
-]
-
-row4ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   | X |   |   |   | ",
-    "————————————————————————————— ",
-]
-
-row5ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   | X |   |   | ",
-    "————————————————————————————— ",
-]
-
-row6ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   | X |   | ",
-    "————————————————————————————— ",
-]
-
-row7ax = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   | X | ",
-    "————————————————————————————— ",
-]
-
-row1ao = [
-    "  1   2   3   4   5   6   7   ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "|   |   |   |   |   |   |   | ",
-    "| O |   |   |   |   |   |   | ",
-    "————————————————————————————— ",
-]
-
-# if UI1 == "1":
-#     print (row1ax)
-# elif UI1 == "2":
-#    print (row2ax)
-# elif UI1 == "3":
-#    print(row3ax)
-# elif UI1 == "4":
-#    print(row4ax)
-# elif UI1 == "5":
-#    print(row5ax)
-# elif UI1 == "6":
-#   print(row6ax)
-# elif UI1 == "7":
-#    print(row7ax)
-
-
-# UI2 = str(input(P2 + ', Enter a row number to put down your chip: '))
