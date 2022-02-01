@@ -35,9 +35,9 @@ emptymap = [
     "| c |   |   |   |   |   |   | ",
     "| d |   |   |   |   |   |   | ",
     "| e |   |   |   |   |   |   | ",
-    "| f |   |   |   |   |   |   | ",
-    "| g |   |   |   |   |   |   | ",
-    "| 2 |   |   |   |   |   |   | ",
+    "| f |   |   | k |   |   |   | ",
+    "| g |   |   | l |   |   |   | ",
+    "| 2 |   | l | k |   |   |   | ",
     "————————————————————————————— ",
 ]
 
@@ -47,6 +47,16 @@ row3 = [1, 2, 3, 4, 5, 6, 7]
 row4 = [1, 2, 3, 4, 5, 6, 7]
 row5 = [1, 2, 3, 4, 5, 6, 7]
 row6 = [1, 2, 3, 4, 5, 6, 7]
+
+displayData = [
+"ooooooo",
+"ooooooo",
+"ooooooo",
+"ooooooo",
+"ooooooo",
+"ooooooo",
+"ooooooo",
+]
 
 chiplog= []
 
@@ -117,19 +127,25 @@ def countachip(currentPlayer):
                         for  keys, values in  rowok.items():
                                 del chipHasBeenPlaced [UI1-1]
                                 chipHasBeenPlaced.insert(UI1-1, currentPlayer[2])
-                                print(values)
+                                #print(values)
                                 
-                    else:
-                         for  keys, values in  rowok.items():
-                            slice1  =  slice(-7,UI1-1)
-                           # print("sl", slice1)
-                            slice2 =  slice
-                            #del chipHasBeenPlaced [values]
-                            #w
-                            # chipHasBeenPlaced.insert(slice1, "O")
-                            #print(values)
-                             
-                        
+      
+        
+       
+
+
+        for i in row1:
+            #print(i)
+           # print("Ok")
+            if i == "x":
+               print("x", end="")
+            elif i == 1:
+                print("0", end="")
+
+            else:
+                print("O", end = "")
+        print ("")
+
             
      #next  step:: how to  translate   my list info(rowok) into a grid
 
@@ -139,14 +155,15 @@ def countachip(currentPlayer):
             #print ("|  ", end = "|")
             
 
-        for i in range(7):
-            print ("")
-            for e in range(7):
-                print ("O",  end = "")
-                for keys, values in rowok.items():
-                    for nums in values:
-                        if nums == (2):
-                            print ("H",  end = "")
+        
+                #for keys, values in rowok.items():
+                 #   for nums in values:
+                        
+                     #   if nums == ('x'):
+                      #      del values[nums]
+                             
+                           # yu == "P"
+                           # ok= print (values,  end = "")
 
 
     #for i in chiplog:
@@ -191,21 +208,6 @@ while true == True:
 
 
 
-
-# def drawmap (coords):
-
-
-# everytime taketurn is called it asks for a colummn to input a piece
-# def taketurn (aplayer):
-    # print player x take turn
-    # take in column player is going to use
-    # calculate the coords that their counter ends up at
-
-    # check list of counter, how many counters havebeen called before in this column?
-    # ex: how many counters have an x pos of 7?
-    # logic that adds counter to a list of counters
-
-
 emptymap = [
     "  1   2   3   4   5   6   7   ",
     "| a |   |   |   |   |   |   | ",
@@ -221,31 +223,8 @@ emptymap = [
 
 
 
-for i in emptymap:
-        if i == "a":
-            print ("found an a")
 
 
 
 
 
-
-# agnes 5:1
-# laura 2:1
-# agnes 2:2
-# laura 3:1
-# agnes 2:3
-
-counter1 = {
-    "x": 2,
-    "y": 1,
-    "s": "o"}
-
-counter2 = {
-    "x": 2,
-    "y": 2,
-    "s": "x"}
-
-# create a variable counter3 , counter3.x = 7forex
-# ask computer how may times "7"for ex has been called before
-# have a list of all of the counters that are in the game
